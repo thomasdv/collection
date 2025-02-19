@@ -81,7 +81,7 @@ class Collection extends Immutable implements MutableInterface, \IteratorAggrega
 	 *
 	 * @return \ArrayIterator
 	 */
-	public function getIterator()
+	public function getIterator(): \Traversable
 	{
 		return new \ArrayIterator( $this->data );
 	}

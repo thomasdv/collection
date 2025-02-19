@@ -44,7 +44,7 @@ class Immutable implements ImmutableInterface, \IteratorAggregate, ArraySerializ
 	 *
 	 * @return \ArrayIterator
 	 */
-	public function getIterator()
+	public function getIterator(): \Traversable
 	{
 		return new \ArrayIterator( $this->data );
 	}

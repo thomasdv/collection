@@ -18,7 +18,7 @@ class ArrayAccess extends Collection implements \ArrayAccess, \Countable, ArrayA
 	 *
 	 * @return bool
 	 */
-	public function offsetExists( $offset )
+	public function offsetExists( mixed $offset ): bool 
 	{
 		// Can not retrieve a key based on a value other than a string, integer or boolean
 		if( !is_string( $offset ) && !is_int( $offset ) && !is_bool( $offset ) ) {
@@ -35,7 +35,7 @@ class ArrayAccess extends Collection implements \ArrayAccess, \Countable, ArrayA
 	 *
 	 * @return mixed
 	 */
-	public function offsetGet( $offset )
+	public function offsetGet( mixed $offset ): mixed
 	{
 		if( $this->offsetExists( $offset ) ) {
 			return $this->data[ $offset ];
@@ -52,11 +52,11 @@ class ArrayAccess extends Collection implements \ArrayAccess, \Countable, ArrayA
 	 *
 	 * @return $this
 	 */
-	public function offsetSet( $offset, $value )
+	public function offsetSet( mixed $offset, mixed $value): void
 	{
 		$this->data[ $offset ] = $value;
 
-		return $this;
+//		return $this;
 	}
 
 	/**
@@ -66,13 +66,13 @@ class ArrayAccess extends Collection implements \ArrayAccess, \Countable, ArrayA
 	 *
 	 * @return $this
 	 */
-	public function offsetUnset( $offset )
+	public function offsetUnset( mixed $offset ): void
 	{
 		if( $this->offsetExists( $offset ) ) {
 			unset( $this->data[ $offset ] );
 		}
 
-		return $this;
+//		return $this;
 	}
 
 	/**
@@ -109,7 +109,7 @@ class ArrayAccess extends Collection implements \ArrayAccess, \Countable, ArrayA
 	 *
 	 * @return int
 	 */
-	public function count()
+	public function count(): int
 	{
 		return count( $this->data );
 	}
@@ -117,7 +117,7 @@ class ArrayAccess extends Collection implements \ArrayAccess, \Countable, ArrayA
 	/**
 	 * @return ArrayAccessIterator
 	 */
-	public function getIterator()
+	public function getIterator(): \Traversable
 	{
 		return new ArrayAccessIterator( $this );
 	}
